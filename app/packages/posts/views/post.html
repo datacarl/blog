@@ -1,0 +1,29 @@
+<template name="post">
+  <div class="post">
+    {{#if edit}}
+      {{> editPost post}}
+    {{else}}
+      {{#with post}}
+        <h2>{{title}}</h2>
+        {{#if currentUser}}
+          <button id="edit">Edit</button>
+        {{/if}}
+        {{#markdown}}{{content}}{{/markdown}}
+        {{#if currentUser}}
+          <button id="edit">Edit</button>
+        {{/if}}
+      {{/with}}
+    {{/if}}
+  </div>
+</template>
+
+<template name="editPost">
+  <input id="title" type="text" value={{title}}>
+  <button id="save">Save</button>
+  <div class='container'>
+    <div class="row">
+      <textarea id="content" name="" cols="100" rows="80">{{{content}}}</textarea>
+    </div>
+  </div>
+  <button id="save">Save</button>
+</template>

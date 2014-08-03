@@ -1,0 +1,18 @@
+<template name="layout">
+  <div class="layout">
+    <div class="container-fluid">
+      <div class="row">
+        <a href="{{pathFor 'home'}}">
+          <div id="page-title-box" class="col-xs-4 col-xs-offset-4">
+            <h1>
+              The :-Datacarl blog
+            </h1>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-8 col-md-offset-2">
+        {{> yield}}
+      </div>
+    </div>
+  </div>
+</template>
