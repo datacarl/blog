@@ -1,31 +1,30 @@
-@import "/packages/bootstrap3-less/bootstrap.import.less";
-@import "mixins.import.less";
-
 // Set the background cover
-/*
 html {
   background: url(/images/bg.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
 }
-*/
+
+$sansFontFamily: 'Lato Regular', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+$sansItalicFontFamily: 'Lato Italic', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+$sansBoldFontFamily: 'Lato Bold', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+$headingsFontFamily: 'Skolar', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+$headingsItalicFontFamily: 'Skolar', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+
 
 // Dont let body background cover the cover, so to speak
 body {
   background: transparent;
-  font-family: @sansFontFamily;
+  font-family: $sansFontFamily;
   font-size: 17px;
 }
 
 #page-title-box {
-  @vertical-margin: 10%;
-  margin-top: @vertical-margin;
-  margin-bottom: @vertical-margin;
+  $vertical-margin: 10%;
+  margin-top: $vertical-margin;
+  margin-bottom: $vertical-margin;
   padding: 5% 0;
   border: 2px solid;
-  .blur(2px);
+  filter: blur(2px);
   text-align: center;
 }
 
@@ -37,19 +36,13 @@ body {
   }
 }
 
-@sansFontFamily: 'Lato Regular', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
-@sansItalicFontFamily: 'Lato Italic', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
-@sansBoldFontFamily: 'Lato Bold', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
-@headingsFontFamily: 'Skolar', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
-@headingsItalicFontFamily: 'Skolar', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
-
 h1, h2, h3, h4 {
-  font-family: @headingsFontFamily;
+  font-family: $headingsFontFamily;
   font-weight: normal;
 }
 
 h1 {
-  font-family: @headingsItalicFontFamily;
+  font-family: $headingsItalicFontFamily;
   font-style: italic;
 }
 
@@ -63,11 +56,11 @@ h3 {
 }
 
 strong {
-  font-family: @sansBoldFontFamily;
+  font-family: $sansBoldFontFamily;
 }
 
 em {
-  font-family: @sansItalicFontFamily;
+  font-family: $sansItalicFontFamily;
 }
 
 @font-face {
