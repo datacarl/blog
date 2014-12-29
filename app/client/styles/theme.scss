@@ -18,14 +18,17 @@ body {
   font-size: 17px;
 }
 
+a {
+  text-decoration: none;
+}
+
+.flex {
+  display: flex;
+}
+
 #page-title-box {
-  $vertical-margin: 10%;
-  margin-top: $vertical-margin;
-  margin-bottom: $vertical-margin;
   padding: 5% 0;
-  border: 2px solid;
   filter: blur(2px);
-  text-align: center;
 }
 
 .post-list-item {
