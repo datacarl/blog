@@ -14,19 +14,16 @@ CommentMethodsConstructor = (options) ->
   collection = options.collection
 
   insert = (params) ->
-    validates = Match.test params,
+    check params,
       email: Match.Where(Utils.validateEmail)
       text: Match.Where(Utils.nonBlankString)
       name: Match.Where(Utils.nonBlankString)
       articleId: String
       parentId: Match.Optional(String)
 
-    if validates
-      _.extend params,
-        createdAt: new Date
+    _.extend params,
+      createdAt: new Date
 
-      collection.insert params
-    else
-      throw new Meteor.Error 500, 'invalid params'
+    collection.insert params
 
   insert: insert
