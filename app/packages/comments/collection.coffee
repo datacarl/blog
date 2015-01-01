@@ -17,6 +17,7 @@ CommentMethodsConstructor = (options) ->
     validates = Match.test params,
       email: Match.Where(Utils.validateEmail)
       text: Match.Where(Utils.nonBlankString)
+      name: Match.Where(Utils.nonBlankString)
 
     if validates
       _.extend params,
