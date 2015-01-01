@@ -1,16 +1,18 @@
 sinon = Npm.require 'sinon'
 
-Tinytest.add 'Should accept email, text and name', (test) ->
+Tinytest.add 'Should accept required params', (test) ->
   collectionMock =
     insert: sinon.spy()
 
   methods = CommentMethodsConstructor
     collection: collectionMock
 
+  # Required params
   params =
     email: "carl@littke.io"
     text: 'Some text'
     name: 'Carl Littke'
+    articleId: 'abc123'
 
   methods.insert params
 
