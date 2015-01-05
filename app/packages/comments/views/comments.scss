@@ -1,0 +1,30 @@
+.comments {
+  list-style-type: none;
+
+  padding: 0;
+
+  &.child {
+    margin-left: 20px;
+  }
+}
+
+textarea {
+  outline: none;
+  resize: none;
+  width: 100%;
+  margin-top: 5px;
+}
+
+input, textarea {
+  border: 2px solid rgba(20,80,90,.2);
+  border-radius: 3px;
+}
+
+.button {
+  background: #FF6600;
+  margin: 0 auto;
+  padding: 5px 8px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.17512156);
+}

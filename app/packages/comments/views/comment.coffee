@@ -16,6 +16,9 @@ Template.comment.events
   "submit [data-form]": (e, tmpl)->
     tmpl.showReplyField.set false
 
+  "click [data-cancel]": (e, tmpl) ->
+    tmpl.showReplyField.set false
+
 Template.comment.helpers
   reply: ->
     Template.instance().showReplyField.get()

@@ -2,7 +2,7 @@
   {{#unless parentId}}
     {{> newComment}}
   {{/unless}}
-  <ul>
+  <ul class="comments {{#if child}}child{{/if}}">
     {{#each comments}}
       {{> comment}}
     {{/each}}

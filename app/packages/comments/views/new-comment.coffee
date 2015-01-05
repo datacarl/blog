@@ -1,3 +1,7 @@
+Template.newComment.rendered = ->
+  # http://www.jacklmoore.com/autosize/
+  this.$('textarea').autosize()
+
 Template.newComment.events
   "submit [data-form]": (e, tmpl)->
     e.preventDefault()

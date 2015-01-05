@@ -1,8 +1,13 @@
 <template name="newComment">
   <form data-form>
-    <input type="email" placeholder="email">
-    <input type="text" placeholder="name">
-    <textarea cols="30" rows="10" placeholder="Thoughts..."></textarea>
-    <input data-submit type="submit">
+    <div>
+      <input type="email" placeholder="email">
+      <input type="text" placeholder="name">
+    </div>
+    <div>
+      <textarea rows="2" placeholder="Thoughts..."></textarea>
+    </div>
+    <button class="button" data-submit>Post</button>
+    <button class="button" data-cancel>Cancel</button>
   </form>
 </template>

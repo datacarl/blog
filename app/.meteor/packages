@@ -12,7 +12,6 @@ fourseven:scss
 coffeescript
 accounts-password
 posts
-less
 markdown
 autopublish
 reactive-var

@@ -1,8 +1,12 @@
 <template name="comment">
-  <li>{{text}} {{parentId}} {{_id}}</li>
-  <button data-reply>reply</button>
-  {{#if reply}}
-    {{> newComment articleId=articleId parentId=_id}}
-  {{/if}}
-  {{> comments articleId=articleId parentId=_id}}
+  <li>
+    <p>{{name}} {{fromNow createdAt}}</p>
+    <p>{{text}} </p>
+    {{#if reply}}
+      {{> newComment articleId=articleId parentId=_id}}
+    {{else}}
+      <button class="button" data-reply>reply</button>
+    {{/if}}
+    {{> comments articleId=articleId parentId=_id child=true}}
+  </li>
 </template>
