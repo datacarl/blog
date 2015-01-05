@@ -4,4 +4,3 @@ Meteor.publish "posts", ->
 Meteor.publish "post", (slug) ->
   check slug, String
   Posts.find slug: slug
-

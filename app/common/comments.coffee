@@ -1,0 +1,1 @@
+@Comments = CommentsConstructor collectionName: 'comments'

@@ -12,6 +12,7 @@ Package.on_use(function(api) {
   api.use("coffeescript", both);
   api.use("templating", "client");
   api.use("underscore", both);
+  api.use("comments", both);
 
   api.add_files([
     "views/post.html",

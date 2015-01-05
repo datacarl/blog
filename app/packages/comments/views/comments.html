@@ -1,0 +1,10 @@
+<template name="comments">
+  {{#unless parentId}}
+    {{> newComment}}
+  {{/unless}}
+  <ul>
+    {{#each comments}}
+      {{> comment}}
+    {{/each}}
+  </ul>
+</template>

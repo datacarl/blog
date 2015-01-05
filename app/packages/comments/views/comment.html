@@ -1,0 +1,8 @@
+<template name="comment">
+  <li>{{text}} {{parentId}} {{_id}}</li>
+  <button data-reply>reply</button>
+  {{#if reply}}
+    {{> newComment articleId=articleId parentId=_id}}
+  {{/if}}
+  {{> comments articleId=articleId parentId=_id}}
+</template>
