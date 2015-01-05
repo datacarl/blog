@@ -16,13 +16,18 @@ a {
   text-decoration: none;
 }
 
-.flex {
-  display: flex;
+.main {
+  width: 75%;
+  margin: 0 auto;
+  max-width: 600px;
 }
 
 #page-title-box {
   padding: 5% 0;
-  filter: blur(2px);
+}
+
+.center-text {
+  text-align: center;
 }
 
 .post-list-item {
