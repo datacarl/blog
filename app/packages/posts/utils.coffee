@@ -8,7 +8,6 @@
           throw new Meteor.Error("403")
       else
         cb.apply this, arguments
-      return
 
 
   # From http://dense13.com/blog/2009/05/03/converting-string-to-slug-javascript/

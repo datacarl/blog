@@ -1,14 +1,19 @@
+Template.post.created = ->
+  @edit = new ReactiveVar
+
+  if Router.current().route.getName() is "new"
+    @edit.set true
+
 Template.post.events "click #edit": (e, tmpl) ->
   e.preventDefault()
-  Session.set "edit", true  if Meteor.userId()
-  false
+  tmpl.edit.set true
 
 Template.post.helpers
   post: ->
     Posts.findOne slug: @slug
 
   edit: ->
-    Session.get "edit"
+    Template.instance().edit.get()
 
 Template.editPost.events "click #save": (e, tmpl) ->
   e.preventDefault()
@@ -29,6 +34,7 @@ Template.editPost.events "click #save": (e, tmpl) ->
     Meteor.call "/update/blogPost", @_id, blogPost, cb
   else
     Meteor.call "/insert/blogPost", blogPost, cb
-  Session.set "edit", false
-  false
+
+  # yeah... maybe use a qs for state instead.
+  tmpl.view.parentView.parentView.parentView.templateInstance().edit.set false
 

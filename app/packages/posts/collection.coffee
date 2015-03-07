@@ -1,2 +1,2 @@
-@Posts = new Meteor.Collection 'posts'
+@Posts = new Mongo.Collection 'posts'
 

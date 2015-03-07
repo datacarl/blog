@@ -16,5 +16,5 @@ Meteor.methods
     Posts.update id,
       $set: blogPost
 
-    slug: Posts.findOne(id).slug
+    slug: Posts.findOne(id)?.slug
   )

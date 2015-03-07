@@ -7,6 +7,9 @@ Router.map ->
 
   @route "post",
     path: "posts/:slug"
+
+    #TODO: subscribe to comments here, or have the comments template do that
+    #for itself when that feature is released.
     waitOn: ->
       Meteor.subscribe "post", @params.slug
 
@@ -15,6 +18,3 @@ Router.map ->
 
   @route "new",
     template: "post"
-    onBeforeAction: ->
-      Session.set "edit", true
-      @next()

@@ -21,6 +21,7 @@ Package.onUse(function(api) {
   api.addFiles([
     'utils.coffee',
     'collection.coffee',
+    'publish.coffee',
   ], both)
 
   api.export('CommentsConstructor', both)

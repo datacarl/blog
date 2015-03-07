@@ -1,25 +1,29 @@
 @CommentsConstructor = (options)->
-  collectionName = options.collectionName
+  publicationName = collectionName = options.collectionName
 
   # private
-  collection = new Meteor.Collection collectionName
+  collection = new Mongo.Collection collectionName
+
+  Publish collection, publicationName
 
   # public
-  methods = CommentMethodsConstructor collection: collection
+  methods = CommentMethodsConstructor
+    collection: collection
+    publicationName: publicationName
 
   methods
 
 # Defines all the methods for the comments.
 CommentMethodsConstructor = (options) ->
   collection = options.collection
+  publicationName = options.publicationName
 
   insert = (params, cb) ->
     check params,
-      email: Match.Where(CommentUtils.validateEmail)
-      text: Match.Where(CommentUtils.nonBlankString)
-      name: Match.Where(CommentUtils.nonBlankString)
+      text: Match.Where CommentUtils.nonBlankString
+      name: Match.Where CommentUtils.nonBlankString
       articleId: String
-      parentId: Match.Optional(String)
+      parentId: Match.Optional String
 
     _.extend params,
       createdAt: new Date
@@ -36,5 +40,9 @@ CommentMethodsConstructor = (options) ->
         parentId:
           $exists: false
 
+  subscribe = (articleId) ->
+    return Meteor.subscribe publicationName, articleId
+
   insert: insert
   getComments: getComments
+  subscribe: subscribe

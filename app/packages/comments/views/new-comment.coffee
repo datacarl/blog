@@ -7,7 +7,6 @@ Template.newComment.events
     e.preventDefault()
 
     newComment =
-      email: tmpl.find('input[type="email"]').value
       name: tmpl.find('input[type="text"]').value
       text: tmpl.find('textarea').value
       articleId: @articleId
@@ -17,7 +16,6 @@ Template.newComment.events
 
     cb = (err) ->
       unless err
-        tmpl.find('input[type="email"]').value = ''
         tmpl.find('input[type="text"]').value = ''
         tmpl.find('textarea').value = ''
 

@@ -1,3 +1,3 @@
 Template.posts.helpers posts: ->
-  Posts.find()
+  Posts.find {}, {sort: {createdAt: -1}}
 

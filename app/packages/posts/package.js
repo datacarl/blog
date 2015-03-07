@@ -13,6 +13,7 @@ Package.on_use(function(api) {
   api.use("templating", "client");
   api.use("underscore", both);
   api.use("comments", both);
+  api.use("mongo", both);
 
   api.add_files([
     "views/post.html",
@@ -28,4 +29,3 @@ Package.on_use(function(api) {
   api.add_files("allow-deny.coffee", "server");
   api.add_files("publications.coffee", "server");
 });
-
