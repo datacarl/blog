@@ -4,7 +4,8 @@
   # private
   collection = new Mongo.Collection collectionName
 
-  Publish collection, publicationName
+  if Meteor.isServer
+    Publish collection, publicationName
 
   # public
   methods = CommentMethodsConstructor
