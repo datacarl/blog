@@ -1,5 +1,7 @@
 @CommentsConstructor = (options)->
-  publicationName = collectionName = options.collectionName
+  options = options or {}
+
+  publicationName = collectionName = options.collectionName or 'comments'
 
   # private
   collection = new Mongo.Collection collectionName

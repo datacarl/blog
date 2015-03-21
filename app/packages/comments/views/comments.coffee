@@ -1,6 +1,9 @@
 Template.comments.onCreated ->
-  this.subscribe 'comments', this.data.articleId
+  unless @data.child
+    name = @data.name or 'comments'
+    console.log(CommentsConstructor)
+    #@Comments = CommentsConstructor name: name
 
 Template.comments.helpers
   comments: ->
-    Comments.getComments @articleId, @parentId
+    #Template.instance().Comments.getComments @articleId, @parentId
