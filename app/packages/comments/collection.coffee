@@ -1,7 +1,13 @@
+store = {}
+
 @CommentsConstructor = (options)->
   options = options or {}
 
   publicationName = collectionName = options.collectionName or 'comments'
+
+  # if we already created this collection, return it. otherwise setup a new one.
+  if store.publicationName
+    return store.publicationName
 
   # private
   collection = new Mongo.Collection collectionName
@@ -12,6 +18,9 @@
   # public
   methods = CommentMethodsConstructor
     collection: collection
+
+  # save it
+  store.publicationName = methods
 
   methods
 
