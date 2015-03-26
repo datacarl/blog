@@ -14,7 +14,8 @@
   getParentViewByName: (childTmpl, parentViewName) ->
     currentView = childTmpl.view.parentView
 
-    return null unless currentView?
+    unless currentView?
+      return undefined
 
     while currentView.name isnt parentViewName
       parent = currentView.parentView
