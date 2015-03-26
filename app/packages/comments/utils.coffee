@@ -29,6 +29,3 @@
     view = CommentUtils.getParentViewByName childTmpl, parentViewName
 
     view.templateInstance() if view?
-
-
-

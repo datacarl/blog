@@ -14,9 +14,4 @@ Template.newComment.events
     if @parentId
       newComment.parentId=@parentId
 
-    cb = (err) ->
-      unless err
-        tmpl.find('input[type="text"]').value = ''
-        tmpl.find('textarea').value = ''
-
-    CommentUtils.getParentTemplateByName(tmpl, 'Template.comments').Comments.insert newComment, cb
+    CommentUtils.getParentTemplateByName(tmpl, 'Template.comments').Comments.insert newComment
