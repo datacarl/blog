@@ -19,4 +19,4 @@ Template.newComment.events
         tmpl.find('input[type="text"]').value = ''
         tmpl.find('textarea').value = ''
 
-    tmpl.view.parentView.parentView.templateInstance().Comments.insert newComment, cb
+    CommentUtils.getParentTemplateByName(tmpl, 'Template.comments').Comments.insert newComment, cb

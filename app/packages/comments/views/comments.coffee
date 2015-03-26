@@ -1,7 +1,7 @@
 Template.comments.onCreated ->
   if @data.child
-    parentCommentsView = CommentUtils.getParentViewByName @, 'Template.comments'
-    @Comments = parentCommentsView.templateInstance().Comments
+    parentCommentsTmpl = CommentUtils.getParentTemplateByName @, 'Template.comments'
+    @Comments = parentCommentsTmpl.Comments
   else
     collectionName = @data.collectionName or 'comments'
     @Comments = window.CommentsConstructor collectionName: collectionName

@@ -11,12 +11,12 @@
   nonBlankString: (x) ->
     CommentUtils.nonEmptyString(x) and !/^\s*$/.test(x)
 
-  getParentViewByName: (childTmpl, parentTmplName) ->
+  getParentViewByName: (childTmpl, parentViewName) ->
     currentView = childTmpl.view.parentView
 
-    return undefined unless currentView?
+    return null unless currentView?
 
-    while currentView.name isnt parentTmplName
+    while currentView.name isnt parentViewName
       parent = currentView.parentView
       if parent
         currentView = parent
@@ -24,5 +24,11 @@
         return
 
     currentView
+
+  getParentTemplateByName: (childTmpl, parentViewName) ->
+    view = CommentUtils.getParentViewByName childTmpl, parentViewName
+
+    view.templateInstance() if view?
+
 
 
