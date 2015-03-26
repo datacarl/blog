@@ -12,14 +12,12 @@
   # public
   methods = CommentMethodsConstructor
     collection: collection
-    publicationName: publicationName
 
   methods
 
 # Defines all the methods for the comments.
 CommentMethodsConstructor = (options) ->
   collection = options.collection
-  publicationName = options.publicationName
 
   insert = (params, cb) ->
     check params,
@@ -43,9 +41,5 @@ CommentMethodsConstructor = (options) ->
         parentId:
           $exists: false
 
-  subscribe = (articleId) ->
-    return Meteor.subscribe publicationName, articleId
-
   insert: insert
   getComments: getComments
-  subscribe: subscribe

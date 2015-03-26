@@ -10,3 +10,19 @@
   # Ensure the string isn't entirely made up of whitespace.
   nonBlankString: (x) ->
     CommentUtils.nonEmptyString(x) and !/^\s*$/.test(x)
+
+  getParentViewByName: (childTmpl, parentTmplName) ->
+    currentView = childTmpl.view.parentView
+
+    return undefined unless currentView?
+
+    while currentView.name isnt parentTmplName
+      parent = currentView.parentView
+      if parent
+        currentView = parent
+      else
+        return
+
+    currentView
+
+

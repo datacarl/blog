@@ -33,6 +33,7 @@ Package.onUse(function(api) {
   api.use("copleykj:jquery-autosize", "client");
 
   api.addFiles([
+    'collection.coffee',
     'views/comment.html',
     'views/comment.coffee',
     'views/comments.html',
