@@ -7,6 +7,8 @@
       <textarea rows="2" placeholder="Thoughts..."></textarea>
     </div>
     <button class="button" data-submit>Post</button>
-    <button class="button" data-cancel>Cancel</button>
+    {{#if parentId}}
+      <button class="button" data-cancel>Cancel</button>
+    {{/if}}
   </form>
 </template>
