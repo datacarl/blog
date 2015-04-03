@@ -14,4 +14,11 @@ Template.newComment.events
     if @parentId
       newComment.parentId=@parentId
 
-    CommentUtils.getParentTemplateByName(tmpl, 'Template.comments').Comments.insert newComment
+    cb = (err) ->
+      # Dont try to clear children's inputs.
+      # They will be gone from the DOM already.
+      if not err and not @parentId
+          tmpl.find('input[type="text"]').value = ''
+          tmpl.find('textarea').value = ''
+
+    CommentUtils.getParentTemplateByName(tmpl, 'Template.comments').Comments.insert(newComment, cb)
