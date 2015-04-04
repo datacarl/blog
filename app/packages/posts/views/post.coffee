@@ -28,4 +28,6 @@ Template.editPost.events "click #save": (e, tmpl) ->
 Template.postContent.helpers
   width: ->
     "half" if @edit
-
+  showEdit: ->
+    parentData = Template.parentData 1
+    Meteor.userId() and not parentData.edit

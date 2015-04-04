@@ -2,12 +2,14 @@
   <div class="post {{width}}">
     {{#with post}}
       <h2>{{title}}</h2>
-      {{#if currentUser}}
+      {{#if showEdit}}
         <a href={{pathFor 'editPost' slug=slug}}>edit</a>
       {{/if}}
       {{#markdown}}{{content}}{{/markdown}}
     {{/with}}
-    {{> comments collectionName='comments' articleId=post._id}}
+    {{#unless edit}}
+      {{> comments collectionName='comments' articleId=post._id}}
+    {{/unless}}
   </div>
 </template>
 

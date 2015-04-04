@@ -19,6 +19,8 @@ a {
 .flex {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: baseline;
 }
 
 .single-column {
@@ -29,7 +31,6 @@ a {
 
 .half {
   width: 45%;
-  margin: 0 auto;
 }
 
 .full {
