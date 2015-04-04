@@ -1,15 +1,15 @@
 <template name="layout">
-<div class="main">
-  <a href="{{pathFor 'home'}}">
-    <div id="page-title-box" class="upper-middle he-he-he">
-      <h1 class="center-text you-looking-at-me">
-        :-Datacarl
-      </h1>
-      <p class="center-text">a blog about the lulz</p>
+  <div>
+    <a href="{{pathFor 'home'}}">
+      <div id="page-title-box" class="upper-middle he-he-he">
+        <h1 class="center-text you-looking-at-me">
+          :-Datacarl
+        </h1>
+        <p class="center-text">a blog about the lulz</p>
+      </div>
+    </a>
+    <div class="flex {{wrapperDivClass}}">
+      {{> yield}}
     </div>
-  </a>
-  <div class='flex'>
-    {{> yield}}
   </div>
-</div>
 </template>

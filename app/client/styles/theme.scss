@@ -16,10 +16,24 @@ a {
   text-decoration: none;
 }
 
-.main {
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.single-column {
   width: 75%;
   margin: 0 auto;
   max-width: 600px;
+}
+
+.half {
+  width: 45%;
+  margin: 0 auto;
+}
+
+.full {
+  width: 100%;
 }
 
 #page-title-box {

@@ -1,19 +1,6 @@
-Template.post.created = ->
-  @edit = new ReactiveVar
-
-  if Router.current().route.getName() is "new"
-    @edit.set true
-
-Template.post.events "click #edit": (e, tmpl) ->
-  e.preventDefault()
-  tmpl.edit.set true
-
-Template.post.helpers
+Template.postWrapper.helpers
   post: ->
     Posts.findOne slug: @slug
-
-  edit: ->
-    Template.instance().edit.get()
 
 Template.editPost.events "click #save": (e, tmpl) ->
   e.preventDefault()
@@ -37,4 +24,8 @@ Template.editPost.events "click #save": (e, tmpl) ->
 
   # yeah... maybe use a qs for state instead.
   tmpl.view.parentView.parentView.parentView.templateInstance().edit.set false
+
+Template.postContent.helpers
+  width: ->
+    "half" if @edit
 

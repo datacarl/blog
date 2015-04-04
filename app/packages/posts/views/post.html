@@ -1,30 +1,34 @@
-<template name="post">
-  <div class="post">
-    {{#if edit}}
-      {{> editPost post}}
-    {{else}}
-      {{#with post}}
-        <h2>{{title}}</h2>
-        {{#if currentUser}}
-          <button id="edit">Edit</button>
-        {{/if}}
-        {{#markdown}}{{content}}{{/markdown}}
-        {{#if currentUser}}
-          <button id="edit">Edit</button>
-        {{/if}}
-      {{/with}}
-    {{/if}}
-  {{> comments collectionName='comments' articleId=post._id}}
+<template name="postContent">
+  <div class="post {{width}}">
+    {{#with post}}
+      <h2>{{title}}</h2>
+      {{#if currentUser}}
+        <a href={{pathFor 'editPost' slug=slug}}>edit</a>
+      {{/if}}
+      {{#markdown}}{{content}}{{/markdown}}
+    {{/with}}
+    {{> comments collectionName='comments' articleId=post._id}}
   </div>
 </template>
 
 <template name="editPost">
-  <input id="title" type="text" value={{title}}>
-  <button id="save">Save</button>
-  <div class='container'>
-    <div class="row">
-      <textarea id="content" name="" cols="100" rows="80">{{{content}}}</textarea>
-    </div>
+  <div class="half">
+    {{#with post}}
+      <input id="title" type="text" value={{title}}>
+      <button id="save">Save</button>
+      <div class='container'>
+        <div class="row">
+          <textarea id="content" name="" cols="100" rows="80">{{{content}}}</textarea>
+        </div>
+      </div>
+      <button id="save">Save</button>
+    {{/with}}
   </div>
-  <button id="save">Save</button>
+</template>
+
+<template name="postWrapper">
+  {{#if edit}}
+    {{> editPost post=post}}
+  {{/if}}
+  {{> postContent post=post edit=edit}}
 </template>
