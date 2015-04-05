@@ -1,8 +1,12 @@
 <template name="postListItem">
   <div class="post-list-item full">
-    <a href="{{pathFor 'post'}}">
-      <h2>{{title}}</h2>
-      <p>{{#markdown}} {{summary}} {{/markdown}}</p>
-    </a>
+      <h2 class="center-text">
+        <a href="{{pathFor 'post'}}">
+          {{title}}
+        </a>
+      </h2>
+      <a href="{{pathFor 'post'}}">
+        <p>{{#markdown}} {{summary}} {{/markdown}}</p>
+      </a>
   </div>
 </template>
