@@ -25,4 +25,7 @@ schema =
   content:
     type: String
 
+  draft:
+    type: String
+
 Posts.attachSchema schema

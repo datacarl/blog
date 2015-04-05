@@ -18,3 +18,11 @@ Meteor.methods
 
     slug: Posts.findOne(id)?.slug
   )
+  "/update/blogPostDraft": Utils.requireLoggedIn((id, draft) ->
+    check id, String
+    check draft, String
+
+    Posts.update id,
+      $set:
+        draft: draft
+  )

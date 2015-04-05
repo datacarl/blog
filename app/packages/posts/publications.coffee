@@ -1,6 +1,25 @@
 Meteor.publish "posts", ->
-  Posts.find()
+  fields =
+    title:1
+    summary:1
+    slug: 1
+    createdAt:1
+  Posts.find {},
+    fields: fields
+
 
 Meteor.publish "post", (slug) ->
   check slug, String
-  Posts.find slug: slug
+
+  fields =
+    title:1
+    summary:1
+    slug:1
+    createdAt:1
+    content:1
+    draft:1
+
+  Posts.find
+    slug: slug
+  ,
+    fields:fields

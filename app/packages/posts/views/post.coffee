@@ -10,7 +10,6 @@ Template.postWrapper.onCreated ->
         @preview.set Posts.findOne(slug:slug)
         c.stop()
 
-
 Template.postWrapper.helpers
   post: ->
     if @edit
@@ -18,26 +17,34 @@ Template.postWrapper.helpers
     else
       Posts.findOne slug: @slug
 
-getPost = (tmpl) ->
+# Take the current post object and replace values using
+# the user's input.
+getPost = (post, tmpl) ->
   content = tmpl.find("#content").value
   title = tmpl.find("#title").value
 
-  post =
+  _.extend post,
     title: title
     content: content
+
+updatePost = _.throttle (_id, draft) ->
+    Meteor.call "/update/blogPostDraft", _id, draft
+  , 5000
 
 Template.editPost.events
   "keyup input,textarea": (e, tmpl) ->
     e.stopPropagation()
 
-    post = getPost(tmpl)
+    post = getPost @, tmpl
 
     Utils.getParentTemplateByName(tmpl, "Template.postWrapper").preview.set post
+
+    updatePost @_id, post.content
 
   "click #save": (e, tmpl) ->
     e.preventDefault()
 
-    post = getPost(tmpl)
+    post = getPost @, tmpl
 
     cb = (err, res) ->
       unless err
