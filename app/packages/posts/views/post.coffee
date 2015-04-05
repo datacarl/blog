@@ -61,7 +61,7 @@ Template.editPost.events
 
 Template.postContent.helpers
   width: ->
-    "half" if @edit
+    if @edit then "half" else "full"
   showEdit: ->
     parentData = Template.parentData 1
     Meteor.userId() and not parentData.edit
