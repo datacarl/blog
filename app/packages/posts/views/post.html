@@ -8,6 +8,7 @@
       {{#markdown}}{{content}}{{/markdown}}
     {{/with}}
     {{#unless edit}}
+      <h3>Comments</h3>
       {{> comments collectionName='comments' articleId=post._id}}
     {{/unless}}
   </div>

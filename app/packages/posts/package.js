@@ -11,6 +11,7 @@ Package.on_use(function(api) {
   api.use("ui", "client");
   api.use("coffeescript", both);
   api.use("templating", "client");
+  api.use("spinkit", "client");
   api.use("underscore", both);
   api.use("comments", both);
   api.use("mongo", both);

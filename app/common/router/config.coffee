@@ -4,6 +4,6 @@ Router.configure
     "loading"
     "dataNotFound"
   ]
-  loadingTemplate: "loading"
+  loadingTemplate: "spinner"
   notFoundTemplate: "notFound"
 
