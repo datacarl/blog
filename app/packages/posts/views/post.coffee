@@ -1,14 +1,13 @@
 Template.postWrapper.onCreated ->
-  if @data.edit
-    @preview = new ReactiveVar
+  @preview = new ReactiveVar
 
-    this.autorun (c) =>
-      slug = @data.slug
-      count = Posts.find({slug: slug}).count()
+  this.autorun (c) =>
+    slug = @data.slug
+    count = Posts.find({slug: slug}).count()
 
-      if count
-        @preview.set Posts.findOne(slug:slug)
-        c.stop()
+    if count
+      @preview.set Posts.findOne(slug:slug)
+      c.stop()
 
 Template.postWrapper.helpers
   post: ->
@@ -54,7 +53,7 @@ Template.editPost.events
       return
 
     if @_id
-      Meteor.call "/update/blogPost", @_id, post, cb
+      Meteor.call "/update/blogPost", @_id, _.pick(post, 'title', 'content'), cb
     else
       Meteor.call "/insert/blogPost", post, cb
 
