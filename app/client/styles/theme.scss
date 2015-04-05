@@ -5,11 +5,10 @@ $headingsFontFamily: 'Skolar', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
 $headingsItalicFontFamily: 'Skolar', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
 
 
-// Dont let body background cover the cover, so to speak
 body {
-  background: transparent;
   font-family: $sansFontFamily;
   font-size: 17px;
+  margin: 0;
 }
 
 a {
@@ -38,7 +37,7 @@ a {
 }
 
 #page-title-box {
-  padding: 5% 0;
+  padding: 1% 0;
 }
 
 .center-text {
@@ -51,6 +50,10 @@ a {
     text-decoration: none;
     cursor: pointer;
   }
+}
+
+.footer {
+  margin-top: 80px;
 }
 
 h1, h2, h3, h4 {

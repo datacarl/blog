@@ -1,14 +1,14 @@
 <template name="postContent">
   <div class="post {{width}}">
     {{#with post}}
-      <h2>{{title}}</h2>
+      <h2 class="center-text">{{title}}</h2>
       {{#if showEdit}}
         <a href={{pathFor 'editPost' slug=slug}}>edit</a>
       {{/if}}
       {{#markdown}}{{content}}{{/markdown}}
     {{/with}}
     {{#unless edit}}
-      <h3>Comments</h3>
+      <h3 class="center-text">Comments</h3>
       {{> comments collectionName='comments' articleId=post._id}}
     {{/unless}}
   </div>
