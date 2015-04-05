@@ -28,3 +28,23 @@
     # collapse whitespace and replace by -
     str = str.replace(/[^a-z0-9 -]/g, "").replace(/\s+/g, "-").replace(/-+/g, "-") # collapse dashes
     str
+
+  getParentViewByName: (childTmpl, parentViewName) ->
+    currentView = childTmpl.view.parentView
+
+    unless currentView?
+      return undefined
+
+    while currentView.name isnt parentViewName
+      parent = currentView.parentView
+      if parent
+        currentView = parent
+      else
+        return
+
+    currentView
+
+  getParentTemplateByName: (childTmpl, parentViewName) ->
+    view = Utils.getParentViewByName childTmpl, parentViewName
+
+    view.templateInstance() if view?

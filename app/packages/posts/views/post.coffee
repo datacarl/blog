@@ -1,29 +1,57 @@
+Template.postWrapper.onCreated ->
+  if @data.edit
+    @preview = new ReactiveVar
+
+    this.autorun (c) =>
+      slug = @data.slug
+      count = Posts.find({slug: slug}).count()
+
+      if count
+        @preview.set Posts.findOne(slug:slug)
+        c.stop()
+
+
 Template.postWrapper.helpers
   post: ->
-    Posts.findOne slug: @slug
+    if @edit
+      Template.instance().preview.get()
+    else
+      Posts.findOne slug: @slug
 
-Template.editPost.events "click #save": (e, tmpl) ->
-  e.preventDefault()
+getPost = (tmpl) ->
   content = tmpl.find("#content").value
   title = tmpl.find("#title").value
-  blogPost =
+
+  post =
     title: title
     content: content
 
-  cb = (err, res) ->
-    unless err
-      Router.go "post",
-        slug: res.slug
+Template.editPost.events
+  "keyup input,textarea": (e, tmpl) ->
+    e.stopPropagation()
 
-    return
+    post = getPost(tmpl)
 
-  if @_id
-    Meteor.call "/update/blogPost", @_id, blogPost, cb
-  else
-    Meteor.call "/insert/blogPost", blogPost, cb
+    Utils.getParentTemplateByName(tmpl, "Template.postWrapper").preview.set post
 
-  # yeah... maybe use a qs for state instead.
-  tmpl.view.parentView.parentView.parentView.templateInstance().edit.set false
+  "click #save": (e, tmpl) ->
+    e.preventDefault()
+
+    post = getPost(tmpl)
+
+    cb = (err, res) ->
+      unless err
+        Router.go "post",
+          slug: res.slug
+
+      return
+
+    if @_id
+      Meteor.call "/update/blogPost", @_id, post, cb
+    else
+      Meteor.call "/insert/blogPost", post, cb
+
+    Utils.getParentTemplateByName(tmpl, "Template.postWrapper").edit.set false
 
 Template.postContent.helpers
   width: ->
