@@ -31,6 +31,7 @@ Package.onUse(function(api) {
   api.use("templating", "client");
   api.use("mrt:moment@2.8.1", "client");
   api.use("copleykj:jquery-autosize", "client");
+  api.use("reactive-var", "client");
 
   api.addFiles([
     'collection.coffee',
